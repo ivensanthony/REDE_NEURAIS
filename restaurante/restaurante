@@ -1,0 +1,133 @@
+package restaurante;
+
+import java.sql.*;
+import java.util.Scanner;
+
+public class restaurante {
+
+    public static void main(String[] args) {
+        try {
+            Connection conexao = DriverManager.getConnection("jdbc:mysql://127.0.0.1/restaurante", "root", "");  
+            System.out.println("Conexão estabelecida!");
+
+            Scanner scanner = new Scanner(System.in);
+            boolean continuar = true;
+
+            while (continuar) { 
+                System.out.println("Escolha uma operação:");
+                System.out.println("1. Cadastrar prato");
+                System.out.println("2. Atualizar prato");
+                System.out.println("3. Excluir prato");
+                System.out.println("4. Listar pratos");
+                System.out.println("5. Sair");
+                System.out.println();
+                int escolha = scanner.nextInt();
+                scanner.nextLine();  
+                
+                switch (escolha) {
+                    case 1:
+                        cadastrarPrato(conexao, scanner);
+                        break;
+                    case 2:
+                        atualizarPrato(conexao, scanner);
+                        break;
+                    case 3:
+                        excluirPrato(conexao, scanner);
+                        break;
+                    case 4:
+                        listarPratos(conexao);
+                        break;
+                    case 5:
+                        continuar = false;
+                        break;
+                    default:
+                        System.out.println("Opção inválida. Tente novamente.");
+                }
+            }
+
+            conexao.close();
+            System.out.println("Conexão encerrada.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void cadastrarPrato(Connection conexao, Scanner scanner) throws SQLException { // Cadastrar o prato
+        System.out.println("Digite o nome do prato:");
+        String prato = scanner.nextLine();
+        System.out.println("Digite o ID do prato:");
+        int id = scanner.nextInt();
+        System.out.println("Digite a quantidade:");
+        int quantidade = scanner.nextInt();
+        System.out.println("Digite o preço:");
+        double preco = scanner.nextDouble();
+
+        String SQL = "INSERT INTO cardapio(prato, id, quantidade, preço) VALUES (?, ?, ? , ?)";
+         (PreparedStatement stmt = conexao.prepareStatement(SQL)) 
+            stmt.setString(1, prato);
+            stmt.setInt(2, id);
+            stmt.setInt(3, quantidade);
+            stmt.setDouble(4, preco);
+            stmt.executeUpdate();
+            System.out.println("Dados cadastrados com sucesso!");
+        
+        
+    }
+
+    public static void atualizarPrato(Connection conexao, Scanner scanner) throws SQLException { // Atualizar o prato
+        System.out.println("Digite o ID do prato a ser atualizado:");
+        int id = scanner.nextInt();
+        scanner.nextLine();  // Consome a nova linha
+        System.out.println("Digite o novo nome do prato:");
+        String novoNome = scanner.nextLine();
+        System.out.println("Digite a nova quantidade:");
+        int novaQuantidade = scanner.nextInt();
+        System.out.println("Digite o novo preço:");
+        double novoPreco = scanner.nextDouble();
+
+        String SQL = "UPDATE cardapio SET prato = ?, quantidade = ?, preço = ? WHERE id = ?";
+        t (PreparedStatement stmt = conexao.prepareStatement(SQL)) 
+            stmt.setString(1, novoNome);
+            stmt.setInt(2, novaQuantidade);
+            stmt.setInt(3, novoPreco);
+            stmt.setDouble(4, id);
+          
+            int rowsUpdated = stmt.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("Dados atualizados com sucesso!");
+            } else {
+                System.out.println("Nenhum prato encontrado com o ID especificado.");
+            }
+        
+    }
+
+    public static void excluirPrato(Connection conexao, Scanner scanner) throws SQLException { // Excluir o prato
+        System.out.println("Digite o ID do prato a ser excluído:"); 
+        int id = scanner.nextInt();
+
+        String SQL = "DELETE FROM cardapio WHERE id = ?";
+         (PreparedStatement stmt = conexao.prepareStatement(SQL)) {
+            stmt.setInt(1, id);
+            int rowsDeleted = stmt.executeUpdate();
+            if (rowsDeleted > 0) {
+                System.out.println("Dados excluídos com sucesso!");
+            } else {
+                System.out.println("Nenhum prato encontrado com o ID especificado.");
+            }
+        
+    }
+
+    public static void listarPratos(Connection conexao) throws SQLException { // Listar o prato
+        String SQL = "SELECT * FROM cardapio";
+         (PreparedStatement stmt = conexao.prepareStatement(SQL); ResultSet rs = stmt.executeQuery()) 
+            while (rs.next()) {
+                String prato = rs.getString("prato");
+                int id = rs.getInt("id");
+                int quantidade = rs.getInt("quantidade");
+                double preco = rs.getDouble("preço");
+                System.out.println("ID: " + id + ", Prato: " + prato + ", Quantidade: " + quantidade + ", Preço: " + preco);
+            }
+        }   
+    
+    }
+}
