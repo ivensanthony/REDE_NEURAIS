@@ -1,4 +1,22 @@
 import customtkinter
+import mysql.connector
+from mysql.connector import Error
+try:
+    # Conecta ao banco de dados
+    conexao = mysql.connector.connect(
+        host='127.0.0.1',
+        database='academy',
+        user='root',
+        password=''
+    )
+    if conexao.is_connected():
+        print("Conexão estabelecida!")
+except Error as e:
+    print(f"Erro ao conectar ao MySQL: {e}")
+finally:
+    if (conexao.is_connected()):
+        conexao.close()
+        print("Conexão encerrada.")
 
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("dark-blue")
