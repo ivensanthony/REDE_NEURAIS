@@ -1,6 +1,30 @@
 import customtkinter
 import mysql.connector
 
+ 
+def adicionar():
+    email_val = email
+    senha_val = senha
+    
+    # Conecta ao banco de dados
+    conexao = mysql.connector.connect(
+        host='127.0.0.1',
+        database='academy',
+        user='root',
+        password=''
+    )
+    
+    cursor = conexao.cursor()
+    query = "INSERT INTO usuários (email, senha) VALUES (%s, %s)"
+    cursor.execute(query, (email_val, senha_val))
+    conexao.commit()  # Confirma a transação
+    
+    print("Novo usuário adicionado com sucesso.")
+    
+    cursor.close()
+    conexao.close()
+    print("Conexão encerrada.")
+
 # Função para autenticar o usuário
 def clique():
     email_val = email.get()
@@ -27,7 +51,7 @@ def clique():
     cursor.close()
     conexao.close()
     print("Conexão encerrada.")
-
+"""
 # Configuração da interface gráfica
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("dark-blue")
@@ -46,3 +70,4 @@ senha.pack(padx=10, pady=10)
 botao.pack(padx=10, pady=10)
 
 janela.mainloop()
+"""
