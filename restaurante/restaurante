@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class restaurante {
 
     public static void main(String[] args) {
-        try {
+ 
             Connection conexao = DriverManager.getConnection("jdbc:mysql://127.0.0.1/restaurante", "root", "");  
             System.out.println("Conexão estabelecida!");
 
@@ -47,9 +47,7 @@ public class restaurante {
 
             conexao.close();
             System.out.println("Conexão encerrada.");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+      
     }
 
     public static void cadastrarPrato(Connection conexao, Scanner scanner) throws SQLException { // Cadastrar o prato
