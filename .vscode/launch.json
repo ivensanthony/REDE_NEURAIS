@@ -1,34 +1,73 @@
 {
-    // Use o IntelliSense para saber mais sobre os atributos possíveis.
-    // Focalizar para exibir as descrições dos atributos existentes.
-    // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
+    "redhat.telemetry.enabled": true,
+    "code-runner.ignoreSelection": true,
+    "java.jdt.ls.java.home": "",
+    "terminal.integrated.defaultProfile.windows": "Terminal de Depuração de JavaScript",
+    "java.completion.favoriteStaticMembers": [
+        "org.junit.Assert.*",
+        "org.junit.Assume.*",
+        "org.junit.jupiter.api.Assertions.*",
+        "org.junit.jupiter.api.Assumptions.*",
+        "org.junit.jupiter.api.DynamicContainer.*",
+        "org.junit.jupiter.api.DynamicTest.*",
+        "org.mockito.Mockito.*",
+        "org.mockito.ArgumentMatchers.*",
+        "org.mockito.Answers.*"
+    ],
+    "git.autofetch": true,
+    "gitlens.views.commitDetails.files.layout": "tree",
+    "gitlens.ai.experimental.provider": "openai",
+    "gitlens.ai.experimental.openai.model": "gpt-4-turbo-preview",
+    "oracledevtools.connectionConfiguration.configFilesFolder": "C:\\Users\\ivens\\Oracle\\network\\admin",
+    "[oraclesql]": {
+        "editor.suggest.showSnippets": true,
+        "editor.quickSuggestions": {
+            "comments": "on",
+            "strings": "on",
+            "other": "on"
+        }
+    },
+    "oracledevtools.connectionConfiguration.walletFileFolder": "C:\\Users\\ivens\\Oracle\\network\\admin",
+    "oracledevtools.bookmarkFileFolder": "C:\\Users\\ivens\\Oracle\\oracle.oracledevtools",
+    "oracledevtools.download.otherFolder": "C:\\Users\\ivens\\downloads",
+    "files.watcherExclude": {
+        "**/.bloop": true,
+        "**/.metals": true,
+        "**/.ammonite": true
+    },
+    "explorer.confirmDelete": false,
+    "workbench.iconTheme": "vscode-icons",
+    "jdk.jdkhome": "c:\\Users\\ivens\\.vscode\\Oracle_JDK-23",
+    "diffEditor.ignoreTrimWhitespace": true,
+    "gitlens.gitCommands.skipConfirmations": [
+        "fetch:command",
+        "stash-push:command",
+        "focus:command"
+    ],
+    "cloudcode.duetAI.project": "arena-connect-b09a2",
+    "gitlens.launchpad.indicator.enabled": false,
+    "cloudcode.project": "avid-factor-432400-n0",
+    "cloudcode.autoDependencies": "off",
+    "database-client.autoSync": true,
+    "mssql.enableRichExperiences": true,
+    "sqldeveloper.sqlHistory.historyLimit": 500,
+    "php.validate.executablePath": "",
+    "settingsSync.ignoredSettings": [
+        "json.schemaDownload.enable"
+    ],
+    "json.schemaDownload.enable": false,
+    "r.rpath.windows": "C:\\Program Files\\R\\R-4.4.3\\bin\\R.exe",
+    "r.debugger.timeouts.startup": 10000,
+    "editor.unicodeHighlight.invisibleCharacters": false,
+    "mssql.connectionGroups": [
         {
-            "type": "R-Debugger",
-            "name": "Launch R-Workspace",
-            "request": "launch",
-            "debugMode": "workspace",
-            "workingDirectory": "${workspaceFolder}"
-        },
-        {
-            "type": "R-Debugger",
-            "name": "Debug R-File",
-            "request": "launch",
-            "debugMode": "file",
-            "workingDirectory": "${workspaceFolder}",
-            "file": "${file}"
-        },
-        {
-            "type": "R-Debugger",
-            "name": "Debug R-Function",
-            "request": "launch",
-            "debugMode": "function",
-            "workingDirectory": "${workspaceFolder}",
-            "file": "${file}",
-            "mainFunction": "main",
-            "allowGlobalDebugging": false
+            "name": "ROOT",
+            "id": "07D64E46-25E9-4573-BEC1-4BA4BB34086E"
         }
     ],
-    "r.debugger.timeouts.startup": 5000
+    "mssql.connections": [],
+    "workbench.editorAssociations": {
+        "*.copilotmd": "vscode.markdown.preview.editor",
+        "*.pma": "default"
+    }
 }
